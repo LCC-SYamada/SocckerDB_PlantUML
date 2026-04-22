@@ -14,11 +14,28 @@ Entity "組織" as Organization {
   管轄地域名
   組織種別CD
 }
+
 Entity "チーム" as Team {
   所属組織CD
   チームCD
   --
   チーム名
+}
+
+Entity "スタジアム履歴テーブル" as StadiumHistory {
+  スタジアムCD
+  チームCD
+  --
+  適用開始日
+  適用終了日
+}
+
+Entity "スタジアム" as Stadium {
+  スタジアムCD
+  --
+  スタジアム名称
+  所在地
+  収容人数
 }
 
 Entity "大会参加チームテーブル" as SeaSonTournament {
