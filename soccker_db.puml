@@ -73,10 +73,11 @@ Entity "節別チームテーブル" as MatchDayRank {
 }
 
 Entity "開催大会情報" as TournamentInfo {
+  開催大会情報ID
+  --
   所属組織CD
   大会CD
   開催回数
-  --
   正式名称
   所属チーム数
   大会方式
@@ -90,6 +91,23 @@ Entity "大会マスタ" as Tournament {
   大会CD
   --
   通称名
+}
+
+Entity "トーナメント表構造" as TournamentTable {
+  トーナメントID
+  --
+  開催大会情報ID
+  ステージ
+  ラウンド
+  マッチNo.
+  次のマッチNo.
+}
+
+Entity "リーグ表構造" as LeagueTable {
+  リーグID
+  --
+  開催大会情報ID
+  グループ名
 }
 
 Entity "別大会への条件ルール" as TournamentDetail {
