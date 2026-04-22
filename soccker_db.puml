@@ -1,0 +1,87 @@
+@startuml
+
+
+Entity "組織" as Country {
+  組織CD
+  --
+  組織名
+  管轄地域名
+  組織種別
+}
+Entity "チーム" as Team {
+  所属組織CD
+  チームCD
+  --
+  チーム名
+}
+
+Entity "大会参加チームテーブル" as SeaSonTournament {
+  大会CD
+  開催年度
+  チームCD
+  --
+  順位
+  勝ち点
+  試合数
+  勝ち数
+  引き分け数
+  負け数
+  得点数
+  失点数
+  得失点差  
+}
+
+Entity "節別チームテーブル" as MatchDayRank {
+  大会CD
+  開催年度
+  チームCD
+  節
+  --
+  順位
+  勝ち点
+  試合数
+  勝ち数
+  引き分け数
+  負け数
+  得点数
+  失点数
+  得失点差  
+}
+
+Entity "開催大会情報" as TournamentInfo {
+  所属組織CD
+  大会CD
+  開催年度
+  --
+  正式名称
+  所属チーム数
+  大会方式
+  開催日時
+  終了日時
+  表示用の開催年度度
+  順位決定方式
+  大会の順位決定方式
+  順位決定方式(リーグフェーズ)
+  順位決定方式(ノックアウトフェーズ)
+}
+
+Entity "大会名" as Tournament {
+  所属組織CD
+  大会CD
+  --
+  通称名
+}
+
+Entity "別大会への条件ルール" as TournamentDetail {
+  大会CD
+  開催年度
+  --
+  別大会の所属CD
+  別大会CD
+  別大会の参加年度
+  条件名
+  順位_to
+  順位_from
+}
+
+@enduml
