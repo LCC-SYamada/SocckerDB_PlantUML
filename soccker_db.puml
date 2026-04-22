@@ -80,10 +80,13 @@ Entity "開催大会情報" as TournamentInfo {
   開催回数
   正式名称
   所属チーム数
-  大会方式
   開始年月
   終了年月
   表示用の開催年度
+  大会方式
+  ホームアウェイ方式
+  延長フラグ
+  PKフラグ
 }
 
 Entity "大会マスタ" as Tournament {
