@@ -32,6 +32,7 @@ Entity "スタジアム履歴テーブル" as StadiumHistory {
 
 Entity "スタジアム" as Stadium {
   スタジアムCD
+  バージョン
   --
   スタジアム名称
   所在地
