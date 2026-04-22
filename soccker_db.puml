@@ -6,7 +6,7 @@ Entity "組織種別" as OrganizationType {
   種別名
 }
 
-Entity "組織" as Organization {
+Entity "組織マスタ" as Organization {
   組織CD
   --
   正式名称
@@ -15,7 +15,7 @@ Entity "組織" as Organization {
   組織種別CD
 }
 
-Entity "チーム" as Team {
+Entity "チームマスタ" as Team {
   所属組織CD
   チームCD
   --
@@ -83,13 +83,9 @@ Entity "開催大会情報" as TournamentInfo {
   開始年月
   終了年月
   表示用の開催年度
-  順位決定方式
-  大会の順位決定方式
-  順位決定方式(リーグフェーズ)
-  順位決定方式(ノックアウトフェーズ)
 }
 
-Entity "大会名" as Tournament {
+Entity "大会マスタ" as Tournament {
   所属組織CD
   大会CD
   --
