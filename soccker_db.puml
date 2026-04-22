@@ -1,12 +1,17 @@
 @startuml
 
+Entity "組織種別" as OrganizationType {
+  組織種別CD
+  --
+  種別名
+}
 
-Entity "組織" as Country {
+Entity "組織" as Organization {
   組織CD
   --
   組織名
   管轄地域名
-  組織種別
+  組織種別CD
 }
 Entity "チーム" as Team {
   所属組織CD
