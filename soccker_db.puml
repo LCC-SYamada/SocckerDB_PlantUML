@@ -9,7 +9,8 @@ Entity "組織種別" as OrganizationType {
 Entity "組織" as Organization {
   組織CD
   --
-  組織名
+  正式名称
+  通称名
   管轄地域名
   組織種別CD
 }
