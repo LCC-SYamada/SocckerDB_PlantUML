@@ -132,6 +132,20 @@ Entity "試合" as Match {
   アウェイチームの後半得点
   アウェイチームの延長前半得点
   アウェイチームのPKスコア
+  開始日時
+}
+
+Entity "試合詳細" as MatchInfo {
+  試合ID
+  --
+  観客数
+  芝状態
+  天候
+  気温
+  湿度
+  風
+  スタジアムCD
+  スタジアムバージョン
 }
 
 Entity "試合主審テーブル" as MatchReferee {
