@@ -7,12 +7,18 @@ package "大会組織" {
     種別名
   }
 
+  Entity "地域マスタ" as Region {
+    地域CD
+    --
+    地域名
+  }
+
   Entity "組織マスタ" as Organization {
     組織CD
     --
     正式名称
     通称名
-    管轄地域名
+    管轄地域CD
     組織種別CD
   }
 }
