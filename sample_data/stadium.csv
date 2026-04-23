@@ -1,3 +1,4 @@
-スタジアムCD,バージョン,スタジアム名称,所在地,収容人数
-ENG001,1,Anfield,"Anfield Rd, Anfield, Liverpool L4 0TH イギリス",54074
-ENG001,2,Anfield,"Anfield Rd, Anfield, Liverpool L4 0TH イギリス",61276
+スタジアムCD,スタジアム名称,所在地,収容人数
+1,Anfield,"Anfield Rd, Anfield, Liverpool L4 0TH イギリス",61276
+2,Emirates Stadium,"Hornsey Rd, London N7 7AJ イギリス",60704
+3,City of Manchester Stadium,"Etihad Stadium, Etihad Campus, Manchester M11 3FF イギリス",53400
