@@ -22,17 +22,8 @@ Entity "チームマスタ" as Team {
   チーム名
 }
 
-Entity "スタジアム履歴テーブル" as StadiumHistory {
-  スタジアムCD
-  チームCD
-  --
-  適用開始日
-  適用終了日
-}
-
 Entity "スタジアム" as Stadium {
   スタジアムCD
-  バージョン
   --
   スタジアム名称
   所在地
@@ -144,7 +135,6 @@ Entity "試合詳細" as MatchInfo {
   湿度
   風
   スタジアムCD
-  スタジアムバージョン
 }
 
 Entity "試合主審テーブル" as MatchReferee {
