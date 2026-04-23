@@ -40,8 +40,7 @@ Entity "スタジアム" as Stadium {
 }
 
 Entity "大会参加チームテーブル" as SeaSonTournament {
-  大会CD
-  開催年度
+  開催大会情報ID
   チームCD
   --
   順位
@@ -56,8 +55,7 @@ Entity "大会参加チームテーブル" as SeaSonTournament {
 }
 
 Entity "節別チームテーブル" as MatchDayRank {
-  大会CD
-  開催年度
+  開催大会情報ID
   チームCD
   節
   --
@@ -174,8 +172,8 @@ Entity "レフェリーマスター" as Referee {
 
 
 Entity "別大会への条件ルール" as TournamentDetail {
-  大会CD
-  開催年度
+  開催大会情報ID
+  ルール連番ID
   --
   別大会の所属CD
   別大会CD
