@@ -110,6 +110,18 @@ Package "大会関連" {
     開催大会情報ID
     グループ名
   }
+
+  Entity "別大会への条件ルール" as TournamentDetail {
+    開催大会情報ID
+    ルール連番ID
+    --
+    別大会の所属CD
+    別大会CD
+    別大会の参加年度
+    条件名
+    順位_to
+    順位_from
+  }
 }
 
 Package "試合関連" {
@@ -152,18 +164,6 @@ Package "試合関連" {
     --
     レフェリーID
     審判ロールID
-  }
-
-  Entity "別大会への条件ルール" as TournamentDetail {
-    開催大会情報ID
-    ルール連番ID
-    --
-    別大会の所属CD
-    別大会CD
-    別大会の参加年度
-    条件名
-    順位_to
-    順位_from
   }
 }
 
