@@ -134,6 +134,31 @@ Entity "試合" as Match {
   アウェイチームのPKスコア
 }
 
+Entity "試合主審テーブル" as MatchReferee {
+  試合ID
+  試合連番ID
+  --
+  レフェリーID
+  審判ロールID
+}
+
+Entity "審判ロール" as RefereeRole {
+  審判ロールID
+  --
+  役割
+}
+
+Entity "レフェリーマスター" as Referee {
+  レフェリーID
+  --
+  名前
+  組織CD
+  資格
+  適用開始日
+  適用終了日
+}
+
+
 Entity "別大会への条件ルール" as TournamentDetail {
   大会CD
   開催年度
