@@ -152,6 +152,25 @@ Package "試合関連" {
     アウェイチームのPKスコア
     開始日時
   }
+
+  Entity "試合イベント" as MatchEvent {
+    試合ID
+    イベントID
+    --
+    イベント発生時の規定経過時間
+    イベント発生時のAT経過時間
+    イベント種別CD
+    チームCD
+    メインターゲット選手CD
+    サブターゲット選手CD
+  }
+
+  Entity "イベント種別マスタ" as EventCategory {
+    イベント種別CD
+    --
+    イベント名
+  }
+
   Entity "試合詳細" as MatchInfo {
     試合ID
     --
