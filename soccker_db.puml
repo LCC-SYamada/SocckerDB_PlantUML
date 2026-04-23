@@ -1,178 +1,188 @@
 @startuml
 
-Entity "組織種別" as OrganizationType {
-  組織種別CD
-  --
-  種別名
+package "大会組織" {
+  Entity "組織種別" as OrganizationType {
+    組織種別CD
+    --
+    種別名
+  }
+
+  Entity "組織マスタ" as Organization {
+    組織CD
+    --
+    正式名称
+    通称名
+    管轄地域名
+    組織種別CD
+  }
 }
 
-Entity "組織マスタ" as Organization {
-  組織CD
-  --
-  正式名称
-  通称名
-  管轄地域名
-  組織種別CD
+Package "クラブチーム" {
+  Entity "チームマスタ" as Team {
+    所属組織CD
+    チームCD
+    --
+    チーム名
+    ボームスタジアムCD
+  }
 }
 
-Entity "チームマスタ" as Team {
-  所属組織CD
-  チームCD
-  --
-  チーム名
-  ボームスタジアムCD
+Package "施設" {
+  Entity "スタジアム" as Stadium {
+    スタジアムCD
+    --
+    スタジアム名称
+    所在地
+    収容人数
+  }
 }
 
-Entity "スタジアム" as Stadium {
-  スタジアムCD
-  --
-  スタジアム名称
-  所在地
-  収容人数
+Package "大会関連" {
+  Entity "大会マスタ" as Tournament {
+    所属組織CD
+    大会CD
+    --
+    通称名
+  }
+
+  Entity "開催大会情報" as TournamentInfo {
+    開催大会情報ID
+    --
+    所属組織CD
+    大会CD
+    開催回数
+    正式名称
+    所属チーム数
+    全ステージ数
+    開始年月
+    終了年月
+    表示用の開催年度
+    大会方式
+    ホームアウェイ方式
+    延長フラグ
+    PKフラグ
+  }
+
+  Entity "大会参加チームテーブル" as SeaSonTournament {
+    開催大会情報ID
+    チームCD
+    --
+    順位
+    勝ち点
+    試合数
+    勝ち数
+    引き分け数
+    負け数
+    得点数
+    失点数
+    得失点差  
+  }
+
+  Entity "節別チームテーブル" as MatchDayRank {
+    開催大会情報ID
+    チームCD
+    節
+    --
+    順位
+    勝ち点
+    試合数
+    勝ち数
+    引き分け数
+    負け数
+    得点数
+    失点数
+    得失点差  
+  }
+
+  Entity "トーナメント表構造" as TournamentTable {
+    トーナメントID
+    --
+    開催大会情報ID
+    ステージ
+    ラウンド
+    マッチNo.
+    次のマッチNo.
+  }
+
+  Entity "リーグ表構造" as LeagueTable {
+    リーグID
+    --
+    開催大会情報ID
+    グループ名
+  }
 }
 
-Entity "大会参加チームテーブル" as SeaSonTournament {
-  開催大会情報ID
-  チームCD
-  --
-  順位
-  勝ち点
-  試合数
-  勝ち数
-  引き分け数
-  負け数
-  得点数
-  失点数
-  得失点差  
+Package "試合関連" {
+  Entity "試合" as Match {
+    試合ID
+    --
+    リーグID
+    トーナメントID
+    ラウンド
+    ホームチームCD
+    ホームチーム合計得点
+    ホームチームの前半得点
+    ホームチームの後半得点
+    ホームチームの延長前半得点
+    ホームチームの延長後半得点
+    ホームチームのPKスコア
+    アウェイチームCD
+    アウェイチーム合計得点
+    アウェイチームの前半得点
+    アウェイチームの後半得点
+    アウェイチームの延長前半得点
+    アウェイチームのPKスコア
+    開始日時
+  }
+  Entity "試合詳細" as MatchInfo {
+    試合ID
+    --
+    観客数
+    芝状態
+    天候
+    気温
+    湿度
+    風
+    スタジアムCD
+  }
+
+  Entity "試合主審テーブル" as MatchReferee {
+    試合ID
+    試合連番ID
+    --
+    レフェリーID
+    審判ロールID
+  }
+
+  Entity "別大会への条件ルール" as TournamentDetail {
+    開催大会情報ID
+    ルール連番ID
+    --
+    別大会の所属CD
+    別大会CD
+    別大会の参加年度
+    条件名
+    順位_to
+    順位_from
+  }
 }
 
-Entity "節別チームテーブル" as MatchDayRank {
-  開催大会情報ID
-  チームCD
-  節
-  --
-  順位
-  勝ち点
-  試合数
-  勝ち数
-  引き分け数
-  負け数
-  得点数
-  失点数
-  得失点差  
-}
+Package "主審" {
+  Entity "審判ロール" as RefereeRole {
+    審判ロールID
+    --
+    役割
+  }
 
-Entity "開催大会情報" as TournamentInfo {
-  開催大会情報ID
-  --
-  所属組織CD
-  大会CD
-  開催回数
-  正式名称
-  所属チーム数
-  全ステージ数
-  開始年月
-  終了年月
-  表示用の開催年度
-  大会方式
-  ホームアウェイ方式
-  延長フラグ
-  PKフラグ
-}
-
-Entity "大会マスタ" as Tournament {
-  所属組織CD
-  大会CD
-  --
-  通称名
-}
-
-Entity "トーナメント表構造" as TournamentTable {
-  トーナメントID
-  --
-  開催大会情報ID
-  ステージ
-  ラウンド
-  マッチNo.
-  次のマッチNo.
-}
-
-Entity "リーグ表構造" as LeagueTable {
-  リーグID
-  --
-  開催大会情報ID
-  グループ名
-}
-
-Entity "試合" as Match {
-  試合ID
-  --
-  リーグID
-  トーナメントID
-  ラウンド
-  ホームチームCD
-  ホームチーム合計得点
-  ホームチームの前半得点
-  ホームチームの後半得点
-  ホームチームの延長前半得点
-  ホームチームの延長後半得点
-  ホームチームのPKスコア
-  アウェイチームCD
-  アウェイチーム合計得点
-  アウェイチームの前半得点
-  アウェイチームの後半得点
-  アウェイチームの延長前半得点
-  アウェイチームのPKスコア
-  開始日時
-}
-
-Entity "試合詳細" as MatchInfo {
-  試合ID
-  --
-  観客数
-  芝状態
-  天候
-  気温
-  湿度
-  風
-  スタジアムCD
-}
-
-Entity "試合主審テーブル" as MatchReferee {
-  試合ID
-  試合連番ID
-  --
-  レフェリーID
-  審判ロールID
-}
-
-Entity "審判ロール" as RefereeRole {
-  審判ロールID
-  --
-  役割
-}
-
-Entity "レフェリーマスター" as Referee {
-  レフェリーID
-  --
-  名前
-  組織CD
-  資格
-  適用開始日
-  適用終了日
-}
-
-
-Entity "別大会への条件ルール" as TournamentDetail {
-  開催大会情報ID
-  ルール連番ID
-  --
-  別大会の所属CD
-  別大会CD
-  別大会の参加年度
-  条件名
-  順位_to
-  順位_from
+  Entity "レフェリーマスター" as Referee {
+    レフェリーID
+    --
+    名前
+    組織CD
+    資格
+    適用開始日
+    適用終了日
+  }
 }
 
 @enduml
