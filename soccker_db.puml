@@ -20,6 +20,7 @@ Entity "チームマスタ" as Team {
   チームCD
   --
   チーム名
+  ボームスタジアムCD
 }
 
 Entity "スタジアム" as Stadium {
