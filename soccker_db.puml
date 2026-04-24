@@ -199,7 +199,7 @@ Package "試合関連" {
     スタッツ結果
   }
 
-  Entity "スタッツ種別" as StatsMaster {
+  Entity "スタッツ種別" as StatsCategory {
     スタッツ役割CD
     --
     スタッツ名
