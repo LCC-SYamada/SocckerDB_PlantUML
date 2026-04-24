@@ -191,6 +191,20 @@ Package "試合関連" {
     退場
   }
 
+  Entity "試合スタッツ" as MatchStats {
+    試合ID
+    選手CD
+    --
+    スタッツ役割CD
+    スタッツ結果
+  }
+
+  Entity "スタッツ種別" as StatsMaster {
+    スタッツ役割CD
+    --
+    スタッツ名
+  }
+
   Entity "試合詳細" as MatchInfo {
     試合ID
     --
