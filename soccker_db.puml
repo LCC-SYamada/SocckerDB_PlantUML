@@ -31,6 +31,29 @@ Package "クラブチーム" {
     チーム名
     ボームスタジアムCD
   }
+
+  Entity "メンバー履歴" as MemberHistory {
+    選手CD
+    所属組織CD
+    チームCD
+    --
+    加入日時
+    退席日時
+  }
+}
+
+Package "メンバー" {
+  Entity "メンバー" as Member {
+    選手CD
+    --
+    選手名
+    生年月日
+    身長
+    体重
+    出生地域CD
+    メインポジション
+    現役フラグ
+  }
 }
 
 Package "施設" {
