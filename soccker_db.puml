@@ -67,6 +67,7 @@ Package "大会関連" {
     ホームアウェイ方式
     延長フラグ
     PKフラグ
+    交代人数
   }
 
   Entity "大会参加チームテーブル" as SeaSonTournament {
