@@ -163,7 +163,7 @@ Package "試合関連" {
     イベント種別CD
     チームCD
     メインターゲット選手CD
-    サブターゲット選手CD
+    関連イベントID
   }
 
   Entity "イベント種別マスタ" as EventCategory {
