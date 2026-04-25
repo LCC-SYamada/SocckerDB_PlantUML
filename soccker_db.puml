@@ -2,24 +2,24 @@
 
 package "大会組織" {
   Entity "組織種別" as OrganizationType {
-    組織種別CD
+    組織種別CD[PK]
     --
     種別名
   }
 
   Entity "地域マスタ" as Region {
-    地域CD
+    地域CD[PK]
     --
     地域名
   }
 
   Entity "組織マスタ" as Organization {
-    組織CD
+    組織CD[PK]
     --
     正式名称
     通称名
-    管轄地域CD
-    組織種別CD
+    管轄地域CD[FK]
+    組織種別CD[FK]
   }
 }
 
@@ -266,5 +266,8 @@ Package "主審" {
     適用終了日
   }
 }
+
+OrganizationType  ||--{ Organization
+Region ||--o{ Organization
 
 @enduml
