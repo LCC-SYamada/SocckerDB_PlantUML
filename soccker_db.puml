@@ -25,17 +25,17 @@ package "大会組織" {
 
 Package "クラブチーム" {
   Entity "チームマスタ" as Team {
-    所属組織CD
-    チームCD
+    所属組織CD[PK, FK]
+    チームCD[PK]
     --
     チーム名
-    ボームスタジアムCD
+    ホームスタジアムCD[FK]
   }
 
   Entity "メンバー履歴" as MemberHistory {
-    選手CD
-    所属組織CD
-    チームCD
+    選手CD[PK, FK]
+    所属組織CD[PK, FK]
+    チームCD[PK, FK]
     --
     加入日時
     退席日時
@@ -44,13 +44,13 @@ Package "クラブチーム" {
 
 Package "メンバー" {
   Entity "メンバー" as Member {
-    選手CD
+    選手CD[PK]
     --
     選手名
     生年月日
     身長
     体重
-    出生地域CD
+    出生地域CD[FK]
     メインポジション
     現役フラグ
   }
@@ -58,7 +58,7 @@ Package "メンバー" {
 
 Package "施設" {
   Entity "スタジアム" as Stadium {
-    スタジアムCD
+    スタジアムCD[PK]
     --
     スタジアム名称
     所在地
@@ -267,7 +267,11 @@ Package "主審" {
   }
 }
 
-OrganizationType  ||--{ Organization
-Region ||--o{ Organization
+OrganizationType  ||-l-{ Organization
+Region ||-r-o{ Organization
+Organization ||--o{ Team
+Stadium ||-u-|| Team
+Team ||-r-{ MemberHistory
+Member ||-l-{ MemberHistory
 
 @enduml
