@@ -95,7 +95,7 @@ Package "大会関連" {
 
   Entity "大会参加チームテーブル" as TournamentParticipant {
     開催大会情報ID[PK]
-    -- 
+    --
     チームCD[FK]
   }
 
