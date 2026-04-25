@@ -68,17 +68,17 @@ Package "施設" {
 
 Package "大会関連" {
   Entity "大会マスタ" as Tournament {
-    所属組織CD
-    大会CD
+    所属組織CD[PK, FK]
+    大会CD[PK]
     --
     通称名
   }
 
   Entity "開催大会情報" as TournamentInfo {
-    開催大会情報ID
+    開催大会情報ID[PK]
     --
-    所属組織CD
-    大会CD
+    所属組織CD[FK]
+    大会CD[FK]
     開催回数
     正式名称
     所属チーム数
@@ -94,24 +94,15 @@ Package "大会関連" {
   }
 
   Entity "大会参加チームテーブル" as SeaSonTournament {
-    開催大会情報ID
-    チームCD
-    --
-    順位
-    勝ち点
-    試合数
-    勝ち数
-    引き分け数
-    負け数
-    得点数
-    失点数
-    得失点差  
+    開催大会情報ID[PK]
+    -- 
+    チームCD[FK]
   }
 
   Entity "節別チームテーブル" as MatchDayRank {
-    開催大会情報ID
-    チームCD
-    節
+    リーグID[PK,FK]
+    チームCD[PK,FK]
+    節[PK]
     --
     順位
     勝ち点
@@ -125,9 +116,9 @@ Package "大会関連" {
   }
 
   Entity "トーナメント表構造" as TournamentTable {
-    トーナメントID
+    トーナメントID[PK]
     --
-    開催大会情報ID
+    開催大会情報ID[FK]
     ステージ
     ラウンド
     マッチNo.
@@ -135,18 +126,18 @@ Package "大会関連" {
   }
 
   Entity "リーグ表構造" as LeagueTable {
-    リーグID
+    リーグID[PK]
     --
-    開催大会情報ID
+    開催大会情報ID[FK]
     グループ名
   }
 
   Entity "別大会への条件ルール" as TournamentDetail {
-    開催大会情報ID
-    ルール連番ID
+    開催大会情報ID[PK,FK]
+    ルール連番ID[PK]
     --
-    別大会の所属CD
-    別大会CD
+    別大会の所属組織CD[FK]
+    別大会CD[FK]
     別大会の参加年度
     条件名
     順位_to
