@@ -93,7 +93,7 @@ Package "大会関連" {
     交代人数
   }
 
-  Entity "大会参加チームテーブル" as SeaSonTournament {
+  Entity "大会参加チームテーブル" as TournamentParticipant {
     開催大会情報ID[PK]
     -- 
     チームCD[FK]
@@ -265,5 +265,14 @@ Organization ||--o{ Team
 Stadium ||-u-|| Team
 Team ||-r-{ MemberHistory
 Member ||-l-{ MemberHistory
+Organization ||--{ Tournament
+Tournament ||-d-{ TournamentInfo
+TournamentInfo ||--o{ TournamentDetail
+TournamentInfo ||--o{ TournamentTable
+TournamentInfo ||--o{ LeagueTable
+TournamentInfo ||-r-o{ TournamentParticipant
+Team ||-r-o{ TournamentParticipant 
+LeagueTable ||--{ MatchDayRank
+TournamentParticipant||--o{ MatchDayRank
 
 @enduml
