@@ -130,6 +130,7 @@ Package "大会関連" {
     --
     開催大会情報ID[FK]
     グループ名
+    ステージ
   }
 
   Entity "別大会への条件ルール" as TournamentDetail {
