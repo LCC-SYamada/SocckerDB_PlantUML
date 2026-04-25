@@ -148,19 +148,19 @@ Package "大会関連" {
 
 Package "試合関連" {
   Entity "試合" as Match {
-    試合ID
+    試合ID[PK]
     --
-    リーグID
-    トーナメントID
+    リーグID[FK]
+    トーナメントID[FK]
     ラウンド
-    ホームチームCD
+    ホームチームCD[FK]
     ホームチーム合計得点
     ホームチームの前半得点
     ホームチームの後半得点
     ホームチームの延長前半得点
     ホームチームの延長後半得点
     ホームチームのPKスコア
-    アウェイチームCD
+    アウェイチームCD[FK]
     アウェイチーム合計得点
     アウェイチームの前半得点
     アウェイチームの後半得点
@@ -170,27 +170,27 @@ Package "試合関連" {
   }
 
   Entity "試合イベント" as MatchEvent {
-    試合ID
-    イベントID
+    試合ID[PK, FK]
+    イベントID[PK]
     --
     イベント発生時の規定経過時間
     イベント発生時のAT経過時間
-    イベント種別CD
-    チームCD
-    メインターゲット選手CD
-    関連イベントID
+    イベント種別CD[FK]
+    チームCD[FK]
+    メインターゲット選手CD[FK]
+    関連イベントID[FK]
   }
 
   Entity "イベント種別マスタ" as EventCategory {
-    イベント種別CD
+    イベント種別CD[PK]
     --
     イベント名
   }
 
   Entity "試合ラインナップ" as MatchLineup {
-    試合ID
-    チームCD
-    選手CD
+    試合ID[PK,FK]
+    チームCD[PK,FK]
+    選手CD[PK,FK]
     --
     役割
     ポジション
@@ -207,21 +207,22 @@ Package "試合関連" {
   }
 
   Entity "試合スタッツ" as MatchStats {
-    試合ID
-    選手CD
+    試合ID[PK,FK]
+    選手CD[PK,FK]
+    スタッツID[PK]
     --
-    スタッツ役割CD
+    スタッツ役割CD[FK]
     スタッツ結果
   }
 
   Entity "スタッツ種別" as StatsCategory {
-    スタッツ役割CD
+    スタッツ役割CD[PK]
     --
     スタッツ名
   }
 
   Entity "試合詳細" as MatchInfo {
-    試合ID
+    試合ID[PK, FK]
     --
     観客数
     芝状態
@@ -233,26 +234,26 @@ Package "試合関連" {
   }
 
   Entity "試合主審テーブル" as MatchReferee {
-    試合ID
-    試合連番ID
+    試合ID[PK, FK]
+    試合連番ID[PK]
     --
-    レフェリーID
-    審判ロールID
+    レフェリーID[FK]
+    審判ロールID[FK]
   }
 }
 
 Package "主審" {
   Entity "審判ロール" as RefereeRole {
-    審判ロールID
+    審判ロールID[PK]
     --
     役割
   }
 
   Entity "レフェリーマスター" as Referee {
-    レフェリーID
+    組織CD[PK,FK]
+    レフェリーID[PK]
     --
     名前
-    組織CD
     資格
     適用開始日
     適用終了日
@@ -267,10 +268,10 @@ Team ||-r-{ MemberHistory
 Member ||-l-{ MemberHistory
 Organization ||--{ Tournament
 Tournament ||-d-{ TournamentInfo
-TournamentInfo ||--o{ TournamentDetail
-TournamentInfo ||--o{ TournamentTable
-TournamentInfo ||--o{ LeagueTable
-TournamentInfo ||-r-o{ TournamentParticipant
+TournamentInfo ||-r-o{ TournamentDetail
+TournamentInfo ||-d-o{ TournamentTable
+TournamentInfo ||-d-o{ LeagueTable
+TournamentInfo ||-d-o{ TournamentParticipant
 Team ||-r-o{ TournamentParticipant 
 LeagueTable ||--{ MatchDayRank
 TournamentParticipant||--o{ MatchDayRank
